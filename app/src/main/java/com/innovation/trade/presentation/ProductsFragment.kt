@@ -10,14 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
@@ -32,6 +30,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
@@ -54,7 +53,11 @@ class ProductsFragment() : Fragment(R.layout.product_list_fragment) {
             setContent {
 
                 Column {
-                    SearchField()
+                    Surface() {
+                        Row(){
+                            SearchField()
+                        }
+                    }
                     ProductsInput(products = productList)
                 }
 
@@ -77,7 +80,13 @@ class ProductsFragment() : Fragment(R.layout.product_list_fragment) {
             ,
             leadingIcon = {
                 Icon(Icons.Filled.Search,"Search Icon")
-            }
+            },
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Text,
+                imeAction = ImeAction.Search
+
+            ),
+
                 
         )
 
