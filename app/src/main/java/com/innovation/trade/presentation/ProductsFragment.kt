@@ -17,7 +17,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -29,6 +32,7 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -65,8 +69,16 @@ class ProductsFragment() : Fragment(R.layout.product_list_fragment) {
         TextField(
             value = queries.value,
             onValueChange = { queries.value=it},
-            label = { Text("Label") },
-            modifier = Modifier.fillMaxWidth()
+            label = { Text("") },
+            modifier = Modifier
+                .fillMaxWidth(0.9f)
+                .padding(8.dp)
+
+            ,
+            leadingIcon = {
+                Icon(Icons.Filled.Search,"Search Icon")
+            }
+                
         )
 
     }
