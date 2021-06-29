@@ -1,6 +1,7 @@
 package com.innovation.trade.presentation
 
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -101,7 +103,9 @@ class ProductsFragment() : Fragment(R.layout.product_list_fragment) {
     @Composable
     fun ProductsInput(products: List<Product>)
     {
-        LazyColumn() {
+        LazyColumn(
+            modifier = Modifier.background(Color.LightGray)
+        ) {
             items(products.size){
                 products.forEach { product -> ProductTemplate(name = product.name,
                     description = product.description, price = product.price)
@@ -112,7 +116,11 @@ class ProductsFragment() : Fragment(R.layout.product_list_fragment) {
     @Composable
     fun ProductTemplate(name: String,description: String,price: String){
         Column (
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier
+                .padding(8.dp)
+                .background(Color.White)
+            ,
+
         ){
             Image(painter = painterResource(R.drawable.ic_launcher_background) ,
                 contentDescription = "",
