@@ -67,7 +67,7 @@ class ProductsFragment() : Fragment(R.layout.product_list_fragment) {
     @Preview
     @Composable
     fun SearchField(){
-        var queries = remember{mutableStateOf("product")}
+        var queries = remember{mutableStateOf("")}
         var text=""
         TextField(
             value = queries.value,
@@ -86,6 +86,10 @@ class ProductsFragment() : Fragment(R.layout.product_list_fragment) {
                 imeAction = ImeAction.Search
 
             ),
+            textStyle = TextStyle(
+                color = MaterialTheme.colors.onSurface,
+                background = MaterialTheme.colors.surface
+            )
 
                 
         )
@@ -118,26 +122,30 @@ class ProductsFragment() : Fragment(R.layout.product_list_fragment) {
                     .clip(shape = RoundedCornerShape(4.dp)),
                 contentScale = ContentScale.Crop
             )
-            Text(
-                text = name,
-                style= MaterialTheme.typography.h6
-            )
-            Text(text = description,
-                style= MaterialTheme.typography.body2
-
-            )
-            Text(
-                text="Price: $price",
-                style = MaterialTheme.typography.body2,
-                color = Color.Gray
-            )
-            Button(
-
-                onClick = { /*TODO*/ },
-                modifier = Modifier.fillMaxWidth()
-
+            Column(
+                modifier = Modifier.padding(16.dp)
             ) {
-                Text(text = "Contact seller")
+                Text(
+                    text = name,
+                    style= MaterialTheme.typography.h6
+                )
+                Text(text = description,
+                    style= MaterialTheme.typography.body2
+
+                )
+                Text(
+                    text="Price: $price",
+                    style = MaterialTheme.typography.body2,
+                    color = Color.Gray
+                )
+                Button(
+
+                    onClick = { /*TODO*/ },
+                    modifier = Modifier.fillMaxWidth()
+
+                ) {
+                    Text(text = "Contact seller")
+                }
             }
         }
     }
